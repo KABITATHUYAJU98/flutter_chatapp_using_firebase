@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chatapp/common/routes/pages.dart';
 import 'package:flutter_chatapp/firebase_options.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 Future<void> main() async {
@@ -17,15 +18,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-
-      initialRoute: AppPages.INITIAL,
-      getPages: AppPages.routes,
-      home: Center(
-          child: Container(
-        child: Text("Project Started!!"),
-      )),
+    return ScreenUtilInit(
+      builder: (BuildContext context, Widget? child) => GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'This is Flutter Demo!!',
+        theme: ThemeData(primarySwatch: Colors.blue),
+        initialRoute: AppPages.INITIAL,
+        getPages: AppPages.routes,
+      ),
     );
   }
 }
